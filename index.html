@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>驻颜养生医美 | 舒缓焕颜护理套餐</title>
+  <meta name="description" content="养生医美客户宣传网页，包含项目亮点、护理组合、体验流程、预约咨询与温馨提示。">
+  <style>
+    :root {
+      --ink: #26231f;
+      --muted: #756f66;
+      --line: #e6ded2;
+      --paper: #fffaf2;
+      --soft: #f3efe6;
+      --sage: #596d5a;
+      --sage-dark: #2f4a39;
+      --rose: #ba7d70;
+      --gold: #b28a52;
+      --white: #ffffff;
+      --shadow: 0 18px 50px rgba(48, 42, 35, 0.12);
+      font-family: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      line-height: 1.65;
+      letter-spacing: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid rgba(230, 222, 210, 0.8);
+      background: rgba(255, 250, 242, 0.92);
+      backdrop-filter: blur(16px);
+    }
+
+    .nav {
+      width: calc(100% - 32px);
+      max-width: 1120px;
+      min-height: 64px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: conic-gradient(from 180deg, var(--sage), #d9c4a1, var(--rose), var(--sage));
+      box-shadow: inset 0 0 0 6px rgba(255, 250, 242, 0.72);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .nav-cta,
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 0 18px;
+      border: 0;
+      border-radius: 999px;
+      background: var(--sage-dark);
+      color: var(--white);
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(47, 74, 57, 0.2);
+    }
+
+    .button.secondary {
+      background: rgba(255, 255, 255, 0.84);
+      color: var(--sage-dark);
+      box-shadow: inset 0 0 0 1px rgba(47, 74, 57, 0.18);
+    }
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - 64px);
+      display: grid;
+      align-items: end;
+      overflow: hidden;
+      background: #e6dfd2;
+    }
+
+    .hero img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255, 250, 242, 0.92) 0%, rgba(255, 250, 242, 0.72) 33%, rgba(255, 250, 242, 0.12) 68%),
+        linear-gradient(0deg, rgba(38, 35, 31, 0.34) 0%, rgba(38, 35, 31, 0) 48%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      width: calc(100% - 32px);
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 72px 0 52px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 12px;
+      border: 1px solid rgba(89, 109, 90, 0.3);
+      border-radius: 999px;
+      color: var(--sage-dark);
+      background: rgba(255, 255, 255, 0.64);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 700px;
+      margin: 18px 0 18px;
+      font-size: clamp(40px, 7vw, 78px);
+      line-height: 1.04;
+      letter-spacing: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .lead {
+      max-width: 580px;
+      margin-bottom: 28px;
+      color: #514c45;
+      font-size: clamp(17px, 2vw, 21px);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 30px;
+    }
+
+    .offer-strip {
+      width: min(780px, 100%);
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: var(--shadow);
+    }
+
+    .offer-strip div {
+      min-height: 82px;
+      padding: 16px;
+      background: rgba(255, 250, 242, 0.82);
+    }
+
+    .offer-strip strong {
+      display: block;
+      color: var(--sage-dark);
+      font-size: 21px;
+      line-height: 1.2;
+    }
+
+    .offer-strip span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    main {
+      position: relative;
+      z-index: 3;
+      background: var(--paper);
+    }
+
+    section {
+      padding: 68px 0;
+    }
+
+    .wrap {
+      width: calc(100% - 32px);
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      margin-bottom: 8px;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.18;
+      letter-spacing: 0;
+    }
+
+    .section-head p,
+    .muted {
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .card {
+      min-height: 100%;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+      font-size: 21px;
+      line-height: 1.3;
+    }
+
+    .card p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .icon {
+      width: 42px;
+      height: 42px;
+      margin-bottom: 16px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #edf3ea;
+      color: var(--sage-dark);
+      font-size: 20px;
+    }
+
+    .packages {
+      background: var(--soft);
+    }
+
+    .package {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .package-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: #f6e5de;
+      color: #8c4d42;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .price {
+      color: var(--sage-dark);
+      font-size: 30px;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .price small {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+    }
+
+    .list li {
+      position: relative;
+      padding-left: 22px;
+      margin: 10px 0;
+    }
+
+    .list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.75em;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+    }
+
+    .feature-band {
+      background: #fbf7ef;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 42px;
+      align-items: center;
+    }
+
+    .panel {
+      padding: 28px;
+      border-radius: 8px;
+      background: var(--sage-dark);
+      color: var(--white);
+    }
+
+    .panel p {
+      color: rgba(255, 255, 255, 0.78);
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 14px;
+    }
+
+    .step {
+      position: relative;
+      display: grid;
+      grid-template-columns: 52px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 18px;
+      border: 1px solid rgba(230, 222, 210, 0.9);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.72);
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step, decimal-leading-zero);
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #f6e5de;
+      color: #8c4d42;
+      font-weight: 800;
+    }
+
+    .step h3 {
+      margin: 0 0 4px;
+      font-size: 19px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .notice {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      background: #fffdf8;
+    }
+
+    details {
+      border-top: 1px solid var(--line);
+    }
+
+    details:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    summary {
+      min-height: 58px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    summary::after {
+      content: "+";
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--soft);
+      color: var(--sage-dark);
+      flex: 0 0 auto;
+    }
+
+    details[open] summary::after {
+      content: "-";
+    }
+
+    details p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    .contact {
+      padding-bottom: 108px;
+      background:
+        linear-gradient(120deg, rgba(89, 109, 90, 0.11), rgba(186, 125, 112, 0.12)),
+        var(--paper);
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .contact-card {
+      padding: 28px;
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-line {
+      display: grid;
+      grid-template-columns: 92px 1fr;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-line:last-child {
+      border-bottom: 0;
+    }
+
+    .contact-line span:first-child {
+      color: var(--muted);
+    }
+
+    .bottom-cta {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 40;
+      padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+      border-top: 1px solid rgba(230, 222, 210, 0.9);
+      background: rgba(255, 250, 242, 0.94);
+      backdrop-filter: blur(16px);
+    }
+
+    .bottom-inner {
+      width: 100%;
+      max-width: 680px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    @media (max-width: 820px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        min-height: 820px;
+      }
+
+      .hero img {
+        object-position: 58% center;
+      }
+
+      .hero::after {
+        background:
+          linear-gradient(180deg, rgba(255, 250, 242, 0.92) 0%, rgba(255, 250, 242, 0.82) 45%, rgba(255, 250, 242, 0.22) 100%),
+          linear-gradient(0deg, rgba(38, 35, 31, 0.42), rgba(38, 35, 31, 0));
+      }
+
+      .hero-inner {
+        padding-top: 46px;
+      }
+
+      .offer-strip,
+      .grid.three,
+      .grid.two,
+      .split,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      section {
+        padding: 52px 0;
+      }
+
+      .contact-line {
+        grid-template-columns: 74px 1fr;
+      }
+    }
+
+    @media (max-width: 460px) {
+      .nav {
+        width: calc(100% - 24px);
+        max-width: 1120px;
+      }
+
+      .brand span {
+        font-size: 15px;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .hero {
+        min-height: 760px;
+      }
+
+      .hero-inner,
+      .wrap {
+        width: calc(100% - 24px);
+        max-width: 1120px;
+      }
+
+      h1 {
+        font-size: 34px;
+        line-height: 1.12;
+      }
+
+      .offer-strip div,
+      .card,
+      .panel,
+      .contact-card {
+        padding: 20px;
+      }
+
+      .bottom-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="主导航">
+      <a class="brand" href="#top" aria-label="驻颜养生医美">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>驻颜养生医美</span>
+      </a>
+      <div class="nav-links" aria-label="页面导航">
+        <a href="#packages">护理套餐</a>
+        <a href="#flow">体验流程</a>
+        <a href="#notice">到店须知</a>
+      </div>
+      <a class="nav-cta" href="#contact" aria-label="预约咨询">预约咨询</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="top" aria-label="驻颜舒缓焕颜护理">
+    <img src="wellness-aesthetic-hero.png" alt="柔和自然光下的养生医美护理空间">
+    <div class="hero-inner">
+      <span class="eyebrow">新客体验 · 养生调理 · 轻医美护理</span>
+      <h1>把状态养回来，<br>让气色自然亮起来</h1>
+      <p class="lead">面向注重日常保养、压力舒缓与肌肤状态管理的客户，提供体质问询、皮肤观察、仪器护理与中式养护结合的预约制体验。</p>
+      <div class="hero-actions">
+        <a class="button" href="#packages">查看套餐</a>
+        <a class="button secondary" href="#contact">领取体验价</a>
+      </div>
+      <div class="offer-strip" aria-label="核心优惠">
+        <div>
+          <strong>$88 起</strong>
+          <span>新客舒缓焕颜体验</span>
+        </div>
+        <div>
+          <strong>60-90 分钟</strong>
+          <span>预约制一对一护理</span>
+        </div>
+        <div>
+          <strong>3 项评估</strong>
+          <span>肌肤 · 压力 · 作息</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main>
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>适合想改善日常状态的人群</h2>
+            <p>从“舒服、稳定、看起来更有精神”出发，做不过度的养护方案。</p>
+          </div>
+        </div>
+        <div class="grid three">
+          <article class="card">
+            <div class="icon" aria-hidden="true">◇</div>
+            <h3>气色暗沉</h3>
+            <p>长期熬夜、换季敏感、妆容不服帖，希望做温和型面部护理。</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">○</div>
+            <h3>压力紧绷</h3>
+            <p>肩颈不适、睡眠浅、精神疲惫，需要放松身心的护理节奏。</p>
+          </article>
+          <article class="card">
+            <div class="icon" aria-hidden="true">✦</div>
+            <h3>重要场合前</h3>
+            <p>约会、拍照、见客户或旅行前，希望肌肤更细腻有光泽。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="packages" id="packages">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>护理组合</h2>
+            <p>可根据客户体感与皮肤状态微调项目顺序，以下价格可替换为门店真实报价。</p>
+          </div>
+        </div>
+        <div class="grid three">
+          <article class="card package">
+            <div class="package-top">
+              <div>
+                <span class="tag">新客推荐</span>
+                <h3>舒缓焕颜体验</h3>
+              </div>
+              <div class="price">$88 <small>/次</small></div>
+            </div>
+            <ul class="list">
+              <li>肌肤状态观察与护理建议</li>
+              <li>面部清洁、补水导入、舒缓修护</li>
+              <li>头肩颈放松 15 分钟</li>
+            </ul>
+          </article>
+
+          <article class="card package">
+            <div class="package-top">
+              <div>
+                <span class="tag">人气组合</span>
+                <h3>气色管理护理</h3>
+              </div>
+              <div class="price">$168 <small>/次</small></div>
+            </div>
+            <ul class="list">
+              <li>面部深层清洁与保湿管理</li>
+              <li>经络舒缓热敷护理</li>
+              <li>定制精华导入与屏障修护</li>
+            </ul>
+          </article>
+
+          <article class="card package">
+            <div class="package-top">
+              <div>
+                <span class="tag">会员优选</span>
+                <h3>月度养护计划</h3>
+              </div>
+              <div class="price">$499 <small>/3次</small></div>
+            </div>
+            <ul class="list">
+              <li>阶段性皮肤与作息跟进</li>
+              <li>面部护理、肩颈放松、仪器养护组合</li>
+              <li>专属预约时段与护理记录</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="feature-band">
+      <div class="wrap split">
+        <div class="panel">
+          <span class="eyebrow">门店定位</span>
+          <h2>不是“速效承诺”，而是可持续的状态管理</h2>
+          <p>宣传重点建议放在专业评估、舒适体验、预约服务和长期保养，而不是夸大治疗效果。这样更适合面对新客户，也更稳妥。</p>
+        </div>
+        <div class="grid two">
+          <article class="card">
+            <h3>一对一问询</h3>
+            <p>到店先了解作息、护理习惯、近期皮肤波动与敏感史，再安排体验。</p>
+          </article>
+          <article class="card">
+            <h3>轻柔护理</h3>
+            <p>以清洁、保湿、舒缓、放松为主，减少新客第一次到店的不安感。</p>
+          </article>
+          <article class="card">
+            <h3>仪器辅助</h3>
+            <p>可展示门店真实设备名称与适用说明，增强专业感和信任度。</p>
+          </article>
+          <article class="card">
+            <h3>护理记录</h3>
+            <p>每次保留护理重点与注意事项，方便客户长期复购与调整。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="flow">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>预约到店流程</h2>
+            <p>清晰流程能降低第一次咨询门槛，也方便销售人员直接转发。</p>
+          </div>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <div>
+              <h3>线上预约</h3>
+              <p>选择护理套餐、预约时间，客服确认是否有敏感史或特殊需求。</p>
+            </div>
+          </article>
+          <article class="step">
+            <div>
+              <h3>到店评估</h3>
+              <p>护理师进行基础问询和肌肤观察，说明体验项目与注意事项。</p>
+            </div>
+          </article>
+          <article class="step">
+            <div>
+              <h3>护理体验</h3>
+              <p>按方案完成清洁、导入、舒缓、肩颈放松等环节，全程保持沟通。</p>
+            </div>
+          </article>
+          <article class="step">
+            <div>
+              <h3>居家建议</h3>
+              <p>结束后提供温和护肤、饮水、作息与下次护理间隔建议。</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="notice" id="notice">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <h2>温馨提示</h2>
+            <p>可作为宣传页底部常见问题，也方便客户提前了解限制条件。</p>
+          </div>
+        </div>
+        <details open>
+          <summary>体验前需要准备什么？</summary>
+          <p>建议提前一天保持充足睡眠，体验当天避免浓妆，到店前如有皮肤破损、严重过敏或近期医美项目，请主动告知护理师。</p>
+        </details>
+        <details>
+          <summary>是否适合敏感肌？</summary>
+          <p>敏感肌客户需先做状态沟通，护理师会根据当日皮肤表现选择更温和的清洁、保湿与舒缓步骤。</p>
+        </details>
+        <details>
+          <summary>宣传中能否写明显效果？</summary>
+          <p>建议使用“舒缓、保湿、放松、状态管理、改善观感”等表达，避免使用保证疗效、永久改变、治疗疾病等绝对化措辞。</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-box">
+        <div>
+          <span class="eyebrow">限时新客礼遇</span>
+          <h2>预约到店，领取专属护理建议</h2>
+          <p class="muted">把这里替换成门店电话、微信二维码或小程序链接，即可作为客户宣传落地页使用。</p>
+          <div class="hero-actions">
+            <a class="button" href="tel:+10000000000">电话咨询</a>
+            <a class="button secondary" href="sms:+10000000000">短信预约</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-line">
+            <span>门店</span>
+            <strong>驻颜养生医美中心</strong>
+          </div>
+          <div class="contact-line">
+            <span>时间</span>
+            <strong>周一至周日 10:00-20:00</strong>
+          </div>
+          <div class="contact-line">
+            <span>地址</span>
+            <strong>请替换为门店真实地址</strong>
+          </div>
+          <div class="contact-line">
+            <span>预约</span>
+            <strong>请替换为微信 / 电话 / 表单链接</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="bottom-cta" aria-label="固定预约栏">
+    <div class="bottom-inner">
+      <a class="button secondary" href="#packages">护理套餐</a>
+      <a class="button" href="#contact">立即预约</a>
+    </div>
+  </div>
+</body>
+</html>
